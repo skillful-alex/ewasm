@@ -19,11 +19,15 @@ The project implements a compilation of the proposed function from the languages
 
 The wasm module will have only two exports:
  - Memory
+ ```
     (memory $memory 256)
     (export  "memory" (memory  0))
+```
  - Transition function
+ ```
     (type  (;0;) (func (param  i32) (result  i32)))
     (export  "transition" (func  0))
+```
 
 And will not have imports.
 

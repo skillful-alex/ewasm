@@ -33,15 +33,15 @@ And will not have imports.
 
 Thus, the wasm code will have a smaller size, their speed will be higher, and the programs calling it will be easier.
 
-All incoming parameters (`pre_stata` and `block_data`) are initiated in the module memory before the transition function is called. The results of the transition function (`post_state` and `deposits`) are also recorded in the module wasm memory, and can be read from it by the calling program.
+All incoming parameters (`pre_stata` and `block_data`) are initiated in the module memory before the transition function is called. The results of the transition function (`post_state` and `deposits`) are also recorded in the module wasm memory, and can be read from it by the calling (host) program.
 If the transition function decides to report an error, then it must return a code other than zero.
 
 ## How to call
 
- 1. Load wasm module
- 2. Initialize the memory of the module
- 3. Call the function "transition"
- 4. Read the memory of the module
+ 1. Load wasm module from blockchain (file for test)
+ 2. Initialize the memory of the module (write `pre_stata` and `block_data` to memory)
+ 3. Call the wasm function "transition"
+ 4. Read the memory of the module (read `post_state` and `deposits` from memory)
 
 ## Memory structure
 
@@ -116,7 +116,8 @@ Alex Nebotov
 ## What lies ahead:
 1) wasm code for ETH transfer
 2) define the gas calculation
-3) define the WASM validation:
+3) can wasm modules call other modules? How to send and receive parameters?
+4) define the WASM validation:
   * wasm version
   * memory requirements
   * remove non-deterministic operations

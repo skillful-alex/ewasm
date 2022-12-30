@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/skillful-alex/ewasm#readme",
   "devDependencies": {
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "yaml": "^1.7.2"
   }
 }
